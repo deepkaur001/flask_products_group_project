@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+	{% for product in products}
+	<ul>
+		<li>Name: {{product['name']}}</li>
+		<li>Price: {{product['price']}}</li>
+		<li>Stock: {{product['stock']}}</li>
+		<li>SKU: {{product['SKU']}}</li>
+	</ul>
+	{% endfor %}
+</body>
+</html>

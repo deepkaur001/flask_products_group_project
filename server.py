@@ -68,17 +68,10 @@ def update(id):
            }
     mysql.query_db(query, data)
     return redirect('/')
-    
+
 @app.route('/delete/<id>')
 def destroy(id):
     pass
 
 
 app.run(debug=True)
-
-when done
-git remote -v
-git remote add upstream
-git remote -v
-git fetch upstream
-git merge upstream/master
