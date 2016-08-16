@@ -7,10 +7,11 @@
 <body>
 	{% for product in products}
 	<ul>
-		<li>001</li>
-		<li>002</li>
-		<li>003</li>
-		<li>004</li>
+		<li>Name: {{product['name']}}</li>
+		<li>Price: {{product['price']}}</li>
+		<li>Stock: {{product['stock']}}</li>
+		<li>SKU: {{product['SKU']}}</li>
 	</ul>
+	{% endfor %}
 </body>
 </html>
