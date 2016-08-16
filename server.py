@@ -21,9 +21,12 @@ def create():
     pass
 
 
-@app.route('/show')
-def read():
-    pass
+@app.route('/show/<id>')
+def read(id):
+    query = "SELECT * FROM products WHERE id=:id"
+    data = {'id':id}
+    mysql.query_db(query, data)
+    return render_template('show.html')
 
 
 @app.route('/edit/<id>')
