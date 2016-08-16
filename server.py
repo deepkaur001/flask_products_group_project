@@ -54,13 +54,31 @@ def edit(id):
 
 
 @app.route('/update/<id>', methods=['POST'])
-def update():
-    pass
-
-
+def update(id):
+    query = "UPDATE products\
+             SET name = :name, price = :price,\
+             stock = :stock, sku = :sku \
+             WHERE id = :id"
+    data = {
+             'name': request.form['name'],
+             'price':  request.form['price'],
+             'stock': request.form['stock'],
+             'sku': request.form['sku'],
+             'id': id
+           }
+    mysql.query_db(query, data)
+    return redirect('/')
+    
 @app.route('/delete/<id>')
 def destroy(id):
     pass
 
 
 app.run(debug=True)
+
+when done
+git remote -v
+git remote add upstream
+git remote -v
+git fetch upstream
+git merge upstream/master
