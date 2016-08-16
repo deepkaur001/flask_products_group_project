@@ -35,10 +35,16 @@ def edit(id):
 def update():
     pass
 
-
 @app.route('/delete/<id>')
+def destroyConfirm():
+    return render_template('delete.html', id=id)
+
+@app.route('/delete/<id>', methods=['POST'])
 def destroy(id):
-    pass
+    query = "DELETE FROM products WHERE id = :id"
+    data = {'id': id}
+    mysql.query_db(query, data)
+    return redirect('/')
 
 
 app.run(debug=True)
