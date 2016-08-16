@@ -8,18 +8,27 @@ mysql = MySQLConnector(app, 'group_project')
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    query="SELECT * FROM products"
+    return render_template("index.html", products=mysql.query_db(query))
 
 
 @app.route('/add')
 def add():
-    pass
+    return render_template("add.html")
 
 
 @app.route('/create', methods=['POST'])
 def create():
-    pass
-
+    query = "INSERT INTO products (name, price, stock, sku, created_at, updated_at)
+             VALUES (:name, :price, :stock, :sku, NOW(), NOW())"
+    data = {
+             'name': request.form['name'],
+             'price':  request.form['price'],
+             'stock':  request.form['stock'],
+             'sku': request.form['sku']
+           }
+    mysql.query_db(query, data)
+    return redirect('/')
 
 @app.route('/show/<id>')
 def read(id):
