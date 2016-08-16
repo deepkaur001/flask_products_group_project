@@ -31,7 +31,17 @@ def read(id):
 
 @app.route('/edit/<id>')
 def edit(id):
-    pass
+    query = '''UPDATE products SET name=:name, price=:price, stock=:stock, SKU=:SKU
+                WHERE id=:id'''
+    data = {
+        'id': id,
+        'name': request.form['name'],
+        'price': request.form['price'],
+        'stock': request.form['stock'],
+        'SKU': request.form['SKU']
+    }
+    mysql.query_db(query, data)
+    return redirect('/')
 
 
 @app.route('/update/<id>', methods=['POST'])
